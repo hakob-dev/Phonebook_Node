@@ -2,6 +2,7 @@ const express = require('express');
 const bp = require('body-parser');
 const cors = require('cors');
 const { sequelize } = require('./models/sequelize');
+const PORT = process.env.port || 4000;
 const { 
     onApi_CreateContact,
     onApi_GetContact,
@@ -81,5 +82,5 @@ app.delete('/group/contact', allow_DeleteGroupContact, async (req, res) => {
     await onApi_DeleteGroupContact(req, res);
 })
 
-app.listen(3000)
+app.listen(PORT,()=>console.log(`node running on ${PORT}`))
 
