@@ -1,1 +1,2 @@
-# node_task_dex
+# Phonebook_Node
+run npm install && npm start
