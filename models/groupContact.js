@@ -18,25 +18,21 @@ Group.belongsToMany(Contact, {
 });
 
 (async function(){
+    //createing test data
     await sequelize.sync();
-    await Contact.create({first_name:"contact_1", last_name: "1", phone_number:"123456"});
-    await Contact.create({first_name:"contact_2", last_name: "2", phone_number:"34234"});
-    await Contact.create({first_name:"contact_3", last_name: "3", phone_number:"423423"});
-    await Contact.create({first_name:"contact_4", last_name: "4", phone_number:"3424232"});
+    await Contact.create({first_name:"Jack", last_name: "Smith", phone_number:"+374-66-23-34"});
+    await Contact.create({first_name:"John", last_name: "Smith", phone_number:"+374-46-13-33"});
+    await Contact.create({first_name:"Micheal", last_name: "Adams", phone_number:"+372-66-23-12"});
+    await Contact.create({first_name:"John", last_name: "Evans", phone_number:"+232-66-23-12"});
 
-    await Group.create({name:"group1"});
-    await Group.create({name:"group2"});
-    await Group.create({name:"group3"});
-    // Group.addContact({group_id: 1,contact_id:1 });
+    await Group.create({name:"group_1"});
+    await Group.create({name:"group_2"});
+    await Group.create({name:"group_3"});
     
-await  GroupContact.create({group_id: 1,contact_id:1 });
-await  GroupContact.create({group_id: 1,contact_id:2 });
-await  GroupContact.create({group_id: 1,contact_id:4 });
-await  GroupContact.create({group_id: 3,contact_id:3 });
-await  GroupContact.create({group_id: 3,contact_id:2 });
-await  GroupContact.create({group_id: 2,contact_id:2 });
-// await  GroupContact.create({group_id: 2,contact_id:1 });
-console.log(await GroupContact.findAll())
+    await  GroupContact.create({group_id: 1,contact_id:1 });
+    await  GroupContact.create({group_id: 1,contact_id:4 });
+    await  GroupContact.create({group_id: 3,contact_id:3 });
+    await  GroupContact.create({group_id: 3,contact_id:2 });
 })()
 
 module.exports = { GroupContact };

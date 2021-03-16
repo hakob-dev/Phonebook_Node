@@ -5,10 +5,10 @@ const { handleApiResponse } = require('../utils/apiResponse');
 const { RESPONSE_TYPE } = require('../utils/responseTypes');
 
 async function onApi_CreateGroupContact(req, res){
-    const { contact_id, group_id } = req.body;
+    const { contact_id, group_id, group_name } = req.body;
 
     try{
-        await createGroupContact( group_id, contact_id )
+        await createGroupContact( group_id || group_name , contact_id)
         handleApiResponse(RESPONSE_TYPE.SUCCESS, res);
     }catch(err){
         handleApiError( ERROR_TYPE.GROUP_CONTACT_ALREADY_EXISTS, res);

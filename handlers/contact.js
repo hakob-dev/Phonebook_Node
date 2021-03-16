@@ -8,7 +8,7 @@ async function onApi_CreateContact(req, res){
     const { contacts } = req.body;
 
     try{
-        await createContact( contacts )
+        await createContact( contacts );
         handleApiResponse(RESPONSE_TYPE.CONTACT_ADDED, res);
     }catch(err){
         handleApiError( ERROR_TYPE.CONTACT_ALREADY_EXISTS, res);

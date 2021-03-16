@@ -31,7 +31,6 @@ const {
     allow_CreateGroupContact,
     allow_DeleteGroupContact,
 } = require('./validators/groupContact');
-// const { Group } = require('./models/group');
 const { GroupContact } = require('./models/groupContact');
 
 (async function(){
@@ -61,7 +60,6 @@ app.delete('/contact', allow_DeleteContact, async (req,res)=>{
 });
 
 app.get('/contact/search', async (req, res)=>{
-    console.log(11)
     await onApi_SearchContact(req, res);
 })
 

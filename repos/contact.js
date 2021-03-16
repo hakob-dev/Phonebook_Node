@@ -1,8 +1,12 @@
 const { Op } = require('sequelize');
 const { Contact } = require('../models/contact');
+const { createGroupContact } = require('./groupContact');
 
 async function createContact(contacts){
-    await Contact.bulkCreate(contacts);
+    const contact_rows = await Contact.bulkCreate(contacts);
+    await Promise.all( contact_rows.map( (el,i) => {
+        if(contacts[i].groups) return Promise.all(contacts[i].groups.map( gr => { if(gr) createGroupContact(gr,el.id) }))
+    }) )
 }
 
 async function getContact( query = null ){
